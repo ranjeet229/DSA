@@ -111,10 +111,40 @@
 
             //saydigit 
 
+// #include<iostream>
+// using namespace std;
+
+// void sayDigit(int n, string arr[]){
+//     //base case
+//     if(n==0){
+//         return ;
+//     }
+//     int digit=n%10;
+//     n=n/10;
+
+//     sayDigit(n, arr);
+
+//     cout<<arr[digit]<<" ";
+
+// }
+
+// int main(){
+
+//     string arr[11]={"zero","one","two","three","four","five","six","severn",
+//     "eight","nine","ten"};
+
+//     int n;
+//     cin>>n;
+
+//     cout<<endl;
+//     sayDigit(n,arr);
+//     cout<<endl;
+// }
+
 #include<iostream>
 using namespace std;
 
-void sayDigit(int n, string arr[]){
+void sayDigit(int n,string arr[]){
     //base case
     if(n==0){
         return ;
@@ -139,4 +169,5 @@ int main(){
     cout<<endl;
     sayDigit(n,arr);
     cout<<endl;
+
 }
