@@ -141,33 +141,76 @@
 //     cout<<endl;
 // }
 
-#include<iostream>
-using namespace std;
+                        // sort an array usign recuirsion 
 
-void sayDigit(int n,string arr[]){
-    //base case
-    if(n==0){
-        return ;
-    }
-    int digit=n%10;
-    n=n/10;
+// #include<iostream>
+// using namespace std;
 
-    sayDigit(n, arr);
+// bool isSorted(int arr[], int n){
+//     //base case
+//     if(n==0|| n==1){
+//         return true;
+//     }
 
-    cout<<arr[digit]<<" ";
+//     if(arr[0]> arr[1]){
+//         return false;
+//     }else{
+//         bool ans = isSorted(arr+1, n-1);
+//         return ans;
+//     }
+// }
 
-}
+// int main(){
 
-int main(){
+//     int arr[]={1,2,3,4,5,6};
+//     int size=6;
+    
+//     int a=isSorted(arr, size);
+//     if(a){
+//         cout<<"array sorted"<<endl;
+//     }else{
+//         cout<<"not sorted "<<endl;
+//     }
+// }
 
-    string arr[11]={"zero","one","two","three","four","five","six","severn",
-    "eight","nine","ten"};
+    //print sum of arrary
 
-    int n;
-    cin>>n;
+// #include<iostream>
+// using namespace std;
 
-    cout<<endl;
-    sayDigit(n,arr);
-    cout<<endl;
+// int main(){
+//     int arr[]={2,3,5,1,6};
+//     int size =5;
+//     int sum=0;
+//     for(int i=0;i<size;i++){
+//         sum+=arr[i];
+//     }
+//     cout<<sum<<endl;
+// }
 
-}
+        // print sum using recursion 
+
+// #include<iostream>
+// using namespace std;
+
+// int getSum(int *arr, int size){
+//     // base case 
+//     if(size==0){
+//         return 0;
+//     }
+//     if(size==1){
+//         return arr[0];
+//     }
+//     int remaining=getSum(arr+1, size-1);
+//     int sum=arr[0]+remaining;
+//     return sum;
+// }
+
+// int main(){
+//     int arr[5]={8,7,6,4,5};
+//     int size=5;
+
+//     int sum = getSum(arr, size);
+//     cout<<sum<<endl;
+// }
+
