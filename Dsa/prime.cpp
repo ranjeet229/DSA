@@ -1,31 +1,34 @@
 //number is PRIME OR Not ..................
-#include<iostream>
+#include <iostream>
+#include <cmath> // For sqrt()
 using namespace std;
 
-bool isPrime(int n){
-    for(int i=2;i<n;i++){
-        //divide hogayah..not a prime no .
-        if(n%i==0){
-            return 0;
+bool isPrime(int n) {
+    if (n <= 1) {
+        return false;
+    }
+    for (int i = 2; i <= sqrt(n); i++) { 
+        if (n % i == 0) {
+            return false;
         }
     }
-    //otherwise
-    return 1;
+    return true;
 }
 
-int main(){
+int main() {
     int n;
-    cin >>  n;
+    cout << "Enter a number: ";
+    cin >> n;
 
-    if(isPrime(n)){
-        cout<<"is a prime no "<< endl;
-    }
-    else{
-        cout<<"is not a prime no "<< endl;
+    if (isPrime(n)) {
+        cout << n << " is a prime number." << endl;
+    } else {
+        cout << n << " is not a prime number." << endl;
     }
 
     return 0;
 }
+
 
 // #include<iostream>
 // using namespace std;
