@@ -77,27 +77,87 @@
 
                         //ArmStrong number....
 
+// #include<bits/stdc++.h>
+// using namespace std;
+// //armstrong number is the number that 371=3^3+7^3+1^3=371 is a armstrong number cube and summiation of each number 
+// bool isArmStrong(int n){
+//     int sum=0;
+//     int original =n;
+//     while(n>0){
+//         int ld=n%10;
+//         sum=sum+(ld*ld*ld);
+//         n/=10;
+//     }
+//     return sum==original;
+// }
+
+// int main(){
+//     int n;
+//     cin>>n;
+
+//     if(isArmStrong(n)){
+//         cout<<"is a armstrong number "<<endl;
+//     }else{
+//         cout<<"is not a armstrong number "<<endl;
+//     }
+// }
+
+                //Print all divisor 
+
+// #include<bits/stdc++.h>
+// using namespace std;
+
+// void printDivisor(int n){
+//     vector<int> ls;
+//     for(int i=1;i<=sqrt(n);i++){
+
+//         if(n%i==0){
+//             ls.push_back(i);
+
+//             if(n/i !=i){
+//                 ls.push_back(n/i);
+//             }
+//         }
+//     }
+//     sort(ls.begin(), ls.end());
+//     for( auto it : ls){
+//         cout<<it<<" ";
+//     }
+// }
+
+            // another method to find the all divisor 
+
+// void printDivisor(int n ){
+
+//     for(int i=1;i<=n;i++){
+//         if(n%i==0){
+//             cout<<i<<" ";
+//         }
+//     }
+// }
+
+// int main(){
+//     int n ;
+//     cin>>n;
+//     printDivisor(n);
+// }
+
+                    //PrintSumOfAllDivisor...
+
 #include<bits/stdc++.h>
 using namespace std;
-//armstrong number is the number that 371=3^3+7^3+1^3=371 is a armstrong number cube and summiation of each number 
-bool isArmStrong(int n){
+
+int SumOfALlDivisor(int n){
     int sum=0;
-    int original =n;
-    while(n>0){
-        int ld=n%10;
-        sum=sum+(ld*ld*ld);
-        n/=10;
+    for(int i=1;i<=n;i++){
+        sum+=(n/i)*i;
     }
-    return sum==original;
+    return sum;
 }
 
 int main(){
+
     int n;
     cin>>n;
-
-    if(isArmStrong(n)){
-        cout<<"is a armstrong number "<<endl;
-    }else{
-        cout<<"is not a armstrong number "<<endl;
-    }
+    cout<<SumOfALlDivisor(n)<<endl;
 }
