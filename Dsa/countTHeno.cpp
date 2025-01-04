@@ -144,20 +144,39 @@
 
                     //PrintSumOfAllDivisor...
 
-#include<bits/stdc++.h>
-using namespace std;
+// #include<bits/stdc++.h>
+// using namespace std;
 
-int SumOfALlDivisor(int n){
-    int sum=0;
-    for(int i=1;i<=n;i++){
-        sum+=(n/i)*i;
-    }
-    return sum;
-}
+// int SumOfALlDivisor(int n){
+//     int sum=0;
+//     for(int i=1;i<=n;i++){
+//         sum+=(n/i)*i;
+//     }
+//     return sum;
+// }
 
-int main(){
+// int main(){
 
-    int n;
-    cin>>n;
-    cout<<SumOfALlDivisor(n)<<endl;
-}
+//     int n;
+//     cin>>n;
+//     cout<<SumOfALlDivisor(n)<<endl;
+// }
+
+    // print number from 1 to n 
+
+// #include<bits/stdc++.h>
+// using namespace std;
+
+// int fun(int n ){
+//     if(n>0){
+//         fun(n-1);
+//         cout<<n<<" ";
+//     }
+// }
+
+// int main(){
+//     int  n;
+//     cin>>n;
+//     fun(n);
+// }
+

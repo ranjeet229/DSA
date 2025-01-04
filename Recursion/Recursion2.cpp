@@ -128,32 +128,84 @@
 
             //find power of a^b using recursion 
 
-#include<iostream>
+// #include<iostream>
+// using namespace std;
+
+// int power(int a, int b){
+//     //base case
+//     if(b==0){
+//         return 1;
+//     }
+//     if(b==1){
+//         return a;
+//     }
+//     //recersive call
+//     int ans=power(a, b/2);
+//     if(b%2==0){
+//         return ans*ans;
+//     }else{
+//         return a*ans*ans;
+//     }
+// }
+
+// int main(){
+//     int a, b;
+//     cin>>a>>b;
+
+//     int ans=power(a, b);
+//     cout<<"answer is "<<ans<<endl;
+
+//     return 0;
+// }
+
+                //print of sum of n number using recursion 
+
+        //using parametrised way
+// #include<bits/stdc++.h>
+// using namespace std;
+
+// int fun(int i, int sum){
+//     if(i<1){
+//         cout<<sum<<" ";
+//         return 0;
+//     }
+//     fun(i-1, sum+i);
+// }
+
+// int main(){
+//     int n;
+//     cin>>n;
+//     fun(n,0);
+// }
+
+        //using functional way...
+
+// #include<bits/stdc++.h>
+// using namespace std;
+
+// int sum(int n){
+//     if(n==0) return 0;
+//     return n+sum(n-1);
+// }
+// int main(){
+//     int n;
+//     cin>>n;
+//     cout<<sum(n);
+
+// }
+
+        //factorial of n 
+
+#include<bits/stdc++.h>
 using namespace std;
 
-int power(int a, int b){
-    //base case
-    if(b==0){
-        return 1;
-    }
-    if(b==1){
-        return a;
-    }
-    //recersive call
-    int ans=power(a, b/2);
-    if(b%2==0){
-        return ans*ans;
-    }else{
-        return a*ans*ans;
-    }
+int fact(int n){
+    if(n==0) return 1;
+    return n*fact(n-1);
 }
 
 int main(){
-    int a, b;
-    cin>>a>>b;
-
-    int ans=power(a, b);
-    cout<<"answer is "<<ans<<endl;
-
-    return 0;
+    int n ;
+    cin>>n;
+    cout<<fact(n);
 }
