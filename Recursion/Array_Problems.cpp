@@ -75,34 +75,21 @@
 
                // Left Rotate the array by d places ...
 
-#include<bits/stdc++.h>
-using namespace std;
+// #include<bits/stdc++.h>
+// using namespace std;
 
-int RemoveDuplicate(int arr[], int n){
-    int i=0;
-    for(int j=1;j<n;j++){
-        if(arr[i]!=arr[j]){
-            arr[i+1]=arr[j];
-            i++;
-        }
-    }
-    return i+1;
-}
-//left rotate the array by d;
-
-// void leftRotate(int arr[], int n , int d){
-//     d=d%n;
-//     int temp[d];
-//     for(int i=0;i<d;i++){
-//         temp[i]=arr[i];
+// int RemoveDuplicate(int arr[], int n){
+//     int i=0;
+//     for(int j=1;j<n;j++){
+//         if(arr[i]!=arr[j]){
+//             arr[i+1]=arr[j];
+//             i++;
+//         }
 //     }
-//     for(int i=d;i<n;i++){
-//         arr[i-d]=arr[i];
-//     }
-//     for(int i=n-d;i<n;i++){
-//         arr[i]=temp[i-(n-d)];
-//     }
+//     return i+1;
 // }
+
+//left rotate the array by d;
 
     //there is an optimal solution ...second method
 
@@ -138,21 +125,21 @@ int RemoveDuplicate(int arr[], int n){
 
             //place all zero at last in an array
 
-#include<bits/stdc++.h>
-using namespace std;
+// #include<bits/stdc++.h>
+// using namespace std;
 
-int ZeroAtEnd(int arr[], int n ){
-    int j=0;
-    for(int i=0;i<n;i++){
-        if(arr[i]!=0){
-            arr[j++]=arr[i];
-        }
-    }
-    while(j<n){
-        arr[j++]=0;
-    }
+// int ZeroAtEnd(int arr[], int n ){
+//     int j=0;
+//     for(int i=0;i<n;i++){
+//         if(arr[i]!=0){
+//             arr[j++]=arr[i];
+//         }
+//     }
+//     while(j<n){
+//         arr[j++]=0;
+//     }
 
-}
+// }
 
 // union of two arrays..
 //logic..
@@ -175,6 +162,64 @@ int ZeroAtEnd(int arr[], int n ){
 */
 
 
+// int main(){
+//     int n;
+//     cin>>n;
+//     int arr[n];
+//     for(int i=0;i<n;i++){
+//         cin>>arr[i];
+//     }
+//     ZeroAtEnd(arr, n);
+//     for(int num: arr){
+//         cout<<num<<" ";
+//     }
+
+// }
+
+            //Finding missing number in an array ...
+
+
+// #include<bits/stdc++.h>
+// using namespace std;
+
+// int missingNumber(int arr[], int N) {
+//     // Write your code here.
+//     int sum=N*(N+1)/2;
+//     int s2=0;
+//     for(int i=0;i<N-1;i++){
+//         s2+=arr[i];
+//     }
+//     return sum-s2;
+// }
+// int main(){
+//     int n;
+//     cin>>n;
+//     int arr[n];
+//     for(int i=0;i<n;i++){
+//         cin>>arr[i];
+//     }
+//     cout<< missingNumber(arr, n);
+
+// }
+
+            //Finding maximum conscutive ones...
+
+#include<bits/stdc++.h>
+using namespace std;
+
+int maximumConscutive(int arr[], int n){
+    int maxi=0;
+    int cnt=0;
+    for(int i=0;i<n;i++){
+        if(arr[i]==1){
+            cnt++;
+            maxi=max(maxi,cnt);
+        }else{
+            cnt=0;
+        }
+    }
+    return maxi;
+}
 int main(){
     int n;
     cin>>n;
@@ -182,9 +227,5 @@ int main(){
     for(int i=0;i<n;i++){
         cin>>arr[i];
     }
-    ZeroAtEnd(arr, n);
-    for(int num: arr){
-        cout<<num<<" ";
-    }
-
+    cout<< maximumConscutive(arr, n );
 }
