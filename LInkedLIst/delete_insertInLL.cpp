@@ -60,7 +60,7 @@ Node* removeTail(Node* head){
     return head;
 }
 
-//remove kth element...>>>
+//remove kth indx or position...>>>
 
 Node* removeKthElement(Node* head, int k){
     if(head==NULL){
@@ -87,11 +87,38 @@ Node* removeKthElement(Node* head, int k){
     }
     return head;
 }
+//remove element on the basic of value;
+
+Node* removeElement(Node* head, int el){
+    if(head==NULL){
+        return head;
+    }
+    if(head->data==el){
+        Node* temp=head;
+        head=head->next;
+        delete temp;
+        return head;
+    }
+    Node* temp=head;
+    Node* prev=NULL;
+    while(temp!=NULL){
+        if(temp->data==el){
+            prev->next=prev->next->next;
+            free(temp);
+            break;
+        }
+        prev=temp;
+        temp=temp->next;
+    }
+    return head;
+}
 
 int main(){
     vector<int> arr={12, 8 ,4, 3};
     Node* head=convert_ArrTo_LL(arr);
     //head=removeHead(head);
-    head=removeTail(head);
+    //head=removeTail(head);
+    // head=removeKthElement(head, 4);
+    head=removeElement(head, 4);
     print(head);
 }
