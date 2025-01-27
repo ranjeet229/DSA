@@ -511,3 +511,416 @@
 //     int arr[n];
 
 // }
+
+// ques 23:- Longest consecutive sequence
+
+// #include<bits/stdc++.h>
+// using namespace std;
+
+// int LongestSequence(int arr[], int n){
+//     if(n==0) return 0;
+//     int longest=1;
+//     unordered_set<int> st;
+//     for(int i=0;i<n;i++){
+//         st.insert(arr[i]);
+//     }
+//     for(auto it: st){
+//         if(st.find(it-1)==st.end()){
+//             int cnt=1;
+//             int x=it;
+//             while(st.find(x+1)!=st.end()){
+//                 x=x+1;
+//                 cnt=cnt+1;
+//             }
+//             longest=max(longest, cnt);
+//         }
+//     }
+//     return longest;
+
+// }
+
+// int main(){
+//     int n;
+//     cin>>n;
+//     int arr[n];
+//     for(int i=0;i<n;i++){
+//         cin>>arr[i];
+//     }
+//     cout<<LongestSequence(arr, n)<<endl;
+
+// }
+
+//.....................XXXXXXXXXX Class Question ...................................//
+
+//1. Write a program to find the maximum and minimum element in an array of integers.
+// #include<bits/stdc++.h>
+// using namespace std;
+
+// int largestElement(vector<int> &arr, int n){
+//     int largest=arr[0];
+//     for(int i=0;i<n;i++){
+//         if(arr[i]>largest){
+//             largest=arr[i];
+//         }
+//     }
+//     return largest;
+// }
+
+// int smallestElement(vector<int> &arr, int n ){
+//     int smallest =arr[0];
+//     for(int i=0;i<n;i++){
+//         if(arr[i]<smallest){
+//             smallest=arr[i];
+//         }
+//     }
+//     return smallest;
+// }
+
+// int main(){
+//     int n;
+//     cin>>n;
+//     vector<int> arr(n);
+//     for(int i=0;i<n;i++){
+//         cin>>arr[i];
+//     }
+//     cout<<largestElement(arr, n)<<endl;
+//     cout<<smallestElement(arr, n)<<endl;
+// }
+
+
+//2.Write a program to reverse the elements of an array.
+//4. Secondlargest element in an array
+
+// #include<bits/stdc++.h>
+// using namespace std;
+
+// void reverseArray(int arr[], int n){
+//     int i=0, j=n-1;
+//     while(i<=j){
+//         swap(arr[i],arr[j]);
+//         i++;
+//         j--;
+//     }
+// }
+// int secondLargestElement(int arr[], int n){
+//     int largest=arr[0];
+//     int sLargest=-1;
+//     for(int i=0;i<n;i++){
+//         if(arr[i]>largest){
+//             sLargest=largest;
+//             largest=arr[i];
+//         }
+//         else if(arr[i]<largest && arr[i]>sLargest){
+//             sLargest=arr[i];
+//         }
+//     }
+//     return sLargest;
+// }
+// int main(){
+//     int n;
+//     cin>>n;
+//     int arr[n];
+//     for(int i=0;i<n;i++){
+//         cin>>arr[i];
+//     }
+//     //reverseArray(arr, n);
+//     for(int num:arr){
+//         cout<<num<<" ";
+//     }cout<<endl;
+//     cout<<secondLargestElement(arr, n )<<endl;
+// }
+
+//3. rotate an array by right
+// #include<bits/stdc++.h>
+// using namespace std;
+
+// void RotateArray(int arr[], int n, int d){
+//     d=d%n;
+//     reverse(arr, arr+n-d);
+//     reverse(arr+n-d, arr+n);
+//     reverse(arr, arr+n);
+// }
+
+// int main(){
+//     int n;
+//     cin>>n;
+//     int arr[n];
+//     for(int i=0;i<n;i++){
+//         cin>>arr[i];
+//     }
+//     int d;
+//     cin>>d;
+//     RotateArray(arr, n , d);
+//     for(int num: arr){
+//         cout<<num<<" ";
+//     }
+// }
+//5. Write a program to count how many times a specific element appears in an array.
+
+// #include<bits/stdc++.h>
+// using namespace std;
+
+// int SpecificElement(int arr[], int n, int x){
+//     int cnt=0;
+//     for(int i=0;i<n;i++){
+//         if(arr[i]==x){
+//             cnt++;
+//         }
+//     }
+//     return cnt;
+// }
+// int main(){
+//     int n,x;
+//     cin>>n;
+//     int arr[n];
+//     for(int i=0;i<n;i++){
+//         cin>>arr[i];
+//     }
+//     cin>>x;
+//     cout<<SpecificElement(arr, n,x)<<endl;
+// }
+
+//6. Move of all zero in an array...
+
+// #include<bits/stdc++.h>
+// using namespace std;
+
+// void moveZeroes(int arr[], int n){
+//     int j=0;
+//     for(int i=0;i<n;i++){
+//         if(arr[i]!=0){
+//             arr[j++]=arr[i];
+//         }
+//     }
+//     while(j<n){
+//         arr[j++]=0;
+//     }
+// }
+
+// int main(){
+//     int n;
+//     cin>>n;
+//     int arr[n];
+//     for(int i=0;i<n;i++){
+//         cin>>arr[i];
+//     }
+//     moveZeroes(arr, n);
+//     for(int num: arr){
+//         cout<<num<<" ";
+//     }
+
+// }
+
+//find the missing number in an array of integers from 1 to n , where the array contains n-1 elements
+
+// #include<bits/stdc++.h>
+// using namespace std;
+
+// int missingNumber(int arr[], int n){
+//     int sum=n*(n+1)/2;
+//     int s2=0;
+//     for(int i=0;i<n;i++){
+//         s2+=arr[i];
+//     }
+//     return sum-s2;
+// }
+
+// int main(){
+//     int n;
+//     cin>>n;
+//     int arr[n];
+//     for(int i=0;i<n;i++){
+//         cin>>arr[i];
+//     }
+//     cout<<missingNumber(arr, n)<<endl;
+// }
+//..............................XXXXXXXXXXXXXXXXXXX................................//
+
+// Ques 24:-Rotate matrix by 90 degree
+
+// void RotateMatrix(int arr[], int n){
+//     for(int i=0;i<n-1;i++){
+//         for(int j=i+1;j<n;j++){
+//             swap(arr[i][j], arr[j][i]);
+//         }
+//     }
+//     //reverse
+//     for(int i=0;i<n;i++){
+//         reverse(arr, arr+n);
+//     }
+// }
+
+//Ques 25:- print the matrix in spiral manner leetcode: 
+
+//ques28: -count subarrays with given sum...
+
+// #include<bits/stdc++.h>
+// using namespace std;
+
+// int findAllSubarraywithsumk(int arr[], int n, int k){
+//     map<int, int> mpp;
+//     mpp[0]=1;
+//     int presum=0, cnt=0;
+//     for(int i=0; i<n;i++){
+//         presum+=arr[i];
+//         int remove=presum-k;
+//         cnt+=mpp[remove];
+//         mpp[presum]+=1;
+//     }
+//     return cnt;
+// }
+
+// int main(){
+//     int n, k;
+//     cin>>n;
+//     int arr[n];
+//     for(int i=0;i<n;i++){
+//         cin>>arr[i];
+//     }
+//     cin>>k;
+//     cout<<findAllSubarraywithsumk(arr, n, k)<<endl;
+// }
+
+                //step -4 Binary search...
+//ques 1:-
+// #include<bits/stdc++.h>
+// using namespace std;
+
+// int search(int arr[],int n, int k){
+//     int l=0, r=n-1;
+//     while(l<=r){
+//         int mid=l+(r-l)/2;
+//         if(arr[mid]==k){
+//             return mid;
+//         }
+//         else if(k>arr[mid]){
+//             l=mid+1;
+//         }else{
+//             r=mid-1;
+//         }
+//     }
+//     return -1;
+// }
+// // ques 2:- find lowerbound of an array...
+// int lowerbound(int arr[], int n, int k){
+//  // int low=0, high=n-1;
+//     // int ans=n;
+//     // while(low<=high){
+//     //     int mid=low+(high-low)/2;
+//     //     if(arr[mid]>=k){
+//     //         ans=mid;
+//     //         high=mid-1;
+//     //     }else{
+//     //         low=mid+1;
+//     //     }
+//     // }
+//     // return ans;
+//     return lower_bound(arr, arr+n, k)-arr;
+// }
+// //ques 3: implement upper bound...
+// int Upperbound(int arr[], int n, int k){
+//     int low=0, high=n-1;
+//     int ans=n;
+//     while(low<=high){
+//         int mid=low+(high-low)/2;
+//         if(arr[mid]>k){
+//             ans=mid;
+//             high=mid-1;
+//         }
+//         else{
+//             low=low+1;
+//         }
+//     }
+// }
+// int main(){
+//     int n, k;
+//     cin>>n;
+//     int arr[n];
+//     for(int i=0;i<n;i++){
+//         cin>>arr[i];
+//     }
+//     cin>>k;
+//     //cout<<search(arr, n, k)<<endl;
+//     cout<<lowerbound(arr, n, k)<<endl;
+// }
+
+//Ques 4: search insert Position ... is same as lowerbound code.
+
+//ques 5:- floor and ceiling ...
+
+// pair<int, int> getFloorAndCeil(vector<int> &a, int n, int x) {
+// 	// Write your code here.
+// 	 int low = 0, high = n - 1;
+//     int ans1 = -1;
+//     while (low <= high) {
+//         int mid = low + (high - low) / 2;
+//         if (a[mid] <= x) {
+//             ans1 = a[mid];
+//             low = mid + 1;
+//         } else {
+//             high = mid - 1;
+//         }
+//     }
+
+//     // Ceiling search
+//     low = 0, high = n - 1;
+//     int ans2 = -1;
+//     while (low <= high) {
+//         int mid = low + (high - low) / 2;
+//         if (a[mid] >= x) {
+//             ans2 = a[mid];
+//             high = mid - 1;
+//         } else {
+//             low = mid + 1;
+//         }
+//     }
+
+//     return {ans1, ans2};
+
+// }
+
+//find duplicate in array using hasmap...
+
+// #include<bits/stdc++.h>
+// using namespace std;
+
+// bool Duplicates(int a[], int n ,int k){
+//     unordered_set<int> st;
+//     for(int i=0; i<n;i++){
+//         if(st.find(a[i])!=st.end())
+//         return true;
+//         st.insert(a[i]);
+//         if(i>=k){
+//             st.erase(a[i-k]);
+//         }
+//     }
+
+// }
+
+//finding dupliCate
+//count frequency
+#include<bits/stdc++.h>
+using namespace std;
+
+
+int peakIndexInMountainArray(int arr[], int n) {
+        int low=0, high=n-1;
+        while(low<high){
+            int mid=low+(high-low)/2;
+            if(arr[mid]<arr[mid+1]){
+                 low=mid+1;
+            }else{
+                high=mid;
+            }
+        }
+        return low;
+    }
+int main(){
+   int n ;
+   cin>>n;
+   int arr[n];
+   for(int i=0;i<n;i++){
+    cin>>arr[i];
+   }
+   cout<<peakIndexInMountainArray(arr, n)<<endl;
+}

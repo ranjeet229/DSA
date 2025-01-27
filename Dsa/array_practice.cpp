@@ -1,3 +1,5 @@
+                   // class-lpu
+
 // #include<bits/stdc++.h>
 // using namespace std;
 
@@ -390,22 +392,413 @@ imp:
 // };
 
 //TOWER OF HANOI...
+// #include<bits/stdc++.h>
+// using namespace std;
+
+// void TOH(int n, char source, char target, char aux){
+//     if(n==1){
+//         cout<<"Move Disk 1 from "<<source<<" to "<<target<<endl;
+//         return;
+//     }
+//     TOH(n-1, source, aux, target);
+//     cout<<"Move disk "<<n<<" from "<<source<<" to "<<target<<endl;
+//     TOH(n-1,aux, target, source);
+// }
+
+// int main(){
+//     int n;
+//     cin>>n;
+//     TOH(n, 'A','C','B');
+
+// }
+
+//to find the greater than the given number and have the same digit of the number
+// #include <bits/stdc++.h>
+// using namespace std;
+
+// void nextGreaterNumber(int arr[], int n) {
+//     int i;
+//     for (i = n - 2; i >= 0; i--) {
+//         if (arr[i] < arr[i + 1]) {
+//             break;
+//         }
+//     }
+
+//     if (i < 0) {
+//         cout << "No greater number" << endl;
+//         return;
+//     }
+
+//     int j;
+//     for (j = n - 1; j > i; j--) {
+//         if (arr[j] > arr[i]) {
+//             break;
+//         }
+//     }
+
+//     swap(arr[i], arr[j]);
+
+//     sort(arr + i + 1, arr + n);
+// }
+
+// int main() {
+//     int n;
+//     cin >> n;
+
+//     int arr[n];
+//     for (int i = 0; i < n; i++) {
+//         cin >> arr[i];
+//     }
+
+//     nextGreaterNumber(arr, n);
+//     for (int i = 0; i < n; i++) {
+//         cout << arr[i];
+//     }
+//     cout << endl;
+
+//     return 0;
+// }
+                    //classes
+/*code around object features polymorphism , encapsulation, abstraction, inheritance*/
+// #include<bits/stdc++.h>
+// using namespace std;
+
+// class car{
+//     private:
+//         string brand;
+//         int year;
+//     public:
+//     void setBrand(string b){
+//         brand =b;
+//     }
+//     string getBrand(){
+//         return brand;
+//     }
+// };
+
+//Abstraction...
+//pure virtual function and abstract classes
+// #include<bits/stdc++.h>
+// using namespace std;
+
+// class shape{
+// public:
+//     virtual void draw()=0;
+
+// };
+// class circle: public shape{
+//     public:
+//     void draw() override{
+//         cout<<"drawing a circle in "<<endl;
+//     }
+// };
+// class square: public shape{
+//     public:
+//     void draw() override{
+
+//     }
+// };
+
+// int main(){
+//     shape* shape1= new circle();
+//     shape* shape2= new square();
+// }
+
+//Inheritance
+// #include<bits/stdc++.h>
+// using namespace std;
+
+// class Animal{
+//     public:
+//     void eat(){
+//         cout<<"Eating food"<<endl;
+//     }
+// };
+// class Dog: public Animal{
+// public:
+//     void Bark(){
+//         cout<<"barking : "<<endl;
+//     }
+// };
+
+// int main(){
+//     Dog dog;
+//     dog.eat();
+//     dog.Bark();
+
+//     return 0;
+// }
+
+//Polymorphism...
+//compile time:- operator overloading, and method overloading
+//Runtime :- function overriding
+
+// class Animal{
+//     public:
+//     virtual void sound(){
+
+//     }
+// };
+// class Dog: public Animal{
+// }
+
+//insertion and deletion in an array
+
+// #include<bits/stdc++.h>
+// using namespace std;
+
+// void insertElement(int arr[], int& n, int capacity, int position, int value) {
+//     if (n >= capacity) {
+//         return;
+//     }
+//     if (position < 0 || position > n) {
+//         cout << "Invalid position." << endl;
+//         return;
+//     }
+//     for (int i = n; i > position; --i) {
+//         arr[i] = arr[i - 1];
+//     }
+//     arr[position] = value;
+//     n++;
+//     cout << "Element inserted successfully." << endl;
+// }
+// void deleteElement(int arr[], int& n, int position) {
+//     if (position < 0 || position >= n) {
+//         cout << "Invalid position." << endl;
+//         return;
+//     }
+//     for (int i = position; i < n- 1; i++) {
+//         arr[i] = arr[i + 1];
+//     }
+//     n--;
+//     cout << "Element deleted successfully." << endl;
+// }
+
+// void displayArray(int arr[], int n) {
+//     for (int i = 0; i < n; i++) {
+//         cout << arr[i] << " ";
+//     }
+//     cout << endl;
+// }
+
+// int main(){
+//     int capacity = 100;
+//     int n;
+//     cout << "Enter the initial size of the array: ";
+//     cin >> n;
+
+//     if (n > capacity) {
+//         cout << "Size exceeds maximum capacity." << endl;
+//         return 1;
+//     }
+
+//     int arr[capacity]; 
+//     cout << "Enter " << n << " elements: ";
+//     for (int i = 0; i < n; i++) {
+//         cin >> arr[i];
+//     }
+// }
+
+// Write a program to find the maximum and minimum element in an array of integers.
+// #include<bits/stdc++.h>
+// using namespace std;
+
+// int largestElement(vector<int> &arr, int n){
+//     int largest=arr[0];
+//     for(int i=0;i<n;i++){
+//         if(arr[i]>largest){
+//             largest=arr[i];
+//         }
+//     }
+//     return largest;
+// }
+
+// int smallestElement(vector<int> &arr, int n ){
+//     int smallest =arr[0];
+//     for(int i=0;i<n;i++){
+//         if(arr[i]<smallest){
+//             smallest=arr[i];
+//         }
+//     }
+//     return smallest;
+// }
+
+// int main(){
+//     int n;
+//     cin>>n;
+//     vector<int> arr(n);
+//     for(int i=0;i<n;i++){
+//         cin>>arr[i];
+//     }
+//     cout<<largestElement(arr, n)<<endl;
+//     cout<<smallestElement(arr, n)<<endl;
+// }
+
+                            //LINKED List...
+
+// #include<bits/stdc++.h>
+// using namespace std;
+
+// struct Node {
+// public:
+//     int data;
+//     Node* next;
+
+//     Node(int val) : data(val), next(nullptr) {}
+// };
+
+// class LinkedList {
+// public:
+//     Node* head;
+
+//     // Constructor
+//     LinkedList() : head(nullptr) {}
+
+//     // Destructor to clean memory
+//     ~LinkedList() {
+//         Node* current = head;
+//         while (current != nullptr) {
+//             Node* temp = current;
+//             current = current->next;
+//             delete temp;
+//         }
+//         head = nullptr;
+//     }
+// };
+// void InsertAtBegining(value){
+//     Node* newNode=new Node(value);
+//     newNode->next=head;
+//     head=newNode;
+// }
+//void insertatend();
+
+//Sorted insertion in linked list
+// #include <iostream>
+// using namespace std;
+
+// struct Node {
+//     int data;
+//     Node* next;
+//     Node(int value) : data(value), next(nullptr) {}
+// };
+
+// void sortedInsert(Node*& head, int value) {
+//     Node* newNode = new Node(value);
+
+//     if (head == nullptr || head->data >= value) {
+//         newNode->next = head;
+//         head = newNode;
+//         return;
+//     }
+//     Node* current = head;
+//     while (current->next != nullptr && current->next->data < value) {
+//         current = current->next;
+//     }
+
+//     // Insert the new node
+//     newNode->next = current->next;
+//     current->next = newNode;
+// }
+
+// void printList(Node* head) {
+//     Node* current = head;
+//     while (current != nullptr) {
+//         cout << current->data << " -> ";
+//         current = current->next;
+//     }
+//     cout << "NULL" << endl;
+// }
+
+// int main() {
+//     Node* head = nullptr;
+//     sortedInsert(head, 10);
+//     sortedInsert(head, 5);
+//     sortedInsert(head, 20);
+//     sortedInsert(head, 15);
+//     cout << "Sorted Linked List: ";
+//     printList(head);
+
+//     return 0;
+// }
+
+// struct Node{
+//     int data;
+//     Node* next;
+
+//     Node(int value): data(value), next(nullptr){}
+// };
+// // void reverse(Node*& head)
+
+// void reverse(Node*&head){
+//     Node* prev=nullptr;
+//     Node* current=head;
+//     Node* next=nullptr;
+
+//     while(current!=nullptr){
+        
+//     }
+// }
+
+// #include<bits/stdc++.h>
+// using namespace std;
+
+// struct Node{
+//     int data;
+//     Node* next;
+//     Node(int value): data(value), next(nullptr){}
+// };
+
+// void duplicate(Node* head){
+//     if(head==nullptr){
+//         return ;
+//     }
+//     Node* current=head;
+//     while(current!=nullptr && current->next !=nullptr){
+//         if(current->data == current->next->data){
+//             Node* temp=current->next;
+//             current->next=current->next->next;
+//             delete temp;
+//         }
+//         else{
+//             current=current->next;
+//         }
+//     }
+// };
+
+                        //....circular linked list......//
+
+// #include<bits/stdc++.h>
+// using namespace std;
+
+// struct Node{
+//     int data;
+//     Node* next;
+//     Node(int value): data(value),next(nullptr){};
+// };
+// void traverse(Node* head){a
+//     if(head==nullptr){
+//         cout<<"List is empty"<<endl;
+//     }
+//     Node* temp=head;
+//     while(temp!=head){
+//         cout<<temp->data<<endl;
+//         temp=temp->next;
+//     }
+// }
+
+
+
+// int main(){};
+
 #include<bits/stdc++.h>
 using namespace std;
 
-void TOH(int n, char source, char target, char aux){
-    if(n==1){
-        cout<<"Move Disk 1 from "<<source<<" to "<<target<<endl;
-        return;
+struct Node{
+    Node(int value){
+        prev=nullptr;
     }
-    TOH(n-1, source, aux, target);
-    cout<<"Move disk "<<n<<" from "<<source<<" to "<<target<<endl;
-    TOH(n-1,aux, target, source);
 }
 
 int main(){
-    int n;
-    cin>>n;
-    TOH(n, 'A','C','B');
 
 }
