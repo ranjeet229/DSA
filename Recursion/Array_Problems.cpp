@@ -897,30 +897,224 @@
 
 // }
 
-//finding dupliCate
-//count frequency
+// #include<bits/stdc++.h>
+// using namespace std;
+
+
+// int peakIndexInMountainArray(int arr[], int n) {
+//         int low=0, high=n-1;
+//         while(low<high){
+//             int mid=low+(high-low)/2;
+//             if(arr[mid]<arr[mid+1]){
+//                  low=mid+1;
+//             }else{
+//                 high=mid;
+//             }
+//         }
+//         return low;
+//     }
+// int main(){
+//    int n ;
+//    cin>>n;
+//    int arr[n];
+//    for(int i=0;i<n;i++){
+//     cin>>arr[i];
+//    }
+//    cout<<peakIndexInMountainArray(arr, n)<<endl;
+// }
+
+//ques: - Finding sqrt of a number using binary search 
+
+// #include<bits/stdc++.h>
+// using namespace std;
+
+// int floorSqrt(int n){
+//     int low=1,  high=n;
+//     int ans=1;
+        // if(n==0){
+        //     return 0;
+        // }
+//     while(low<=high){
+//         int mid=low+(high-low)/2;
+//         if(mid*mid<=n){
+//             ans=mid;
+//             low=mid+1;
+//         }else{
+//             high=mid-1;
+//         }
+//     }
+//     return ans;
+// }
+
+// int main(){
+//     int n;
+//     cin>>n;
+//     cout<<floorSqrt(n)<<endl;
+// }
+
+//print all permutation combination of a pair in an array ...
+
+// #include<bits/stdc++.h>
+// using namespace std;
+
+// void printPairs(int arr[], int n) {
+//     for (int i = 0; i < n; i++) {
+//         for (int j = i+1; j < n; j++) {
+//             cout << "(" << arr[i] << ", " << arr[j] << ")" << endl;
+//         }
+//     }
+// }
+
+// int main() {
+//     int n;
+//     cin >> n;
+//     int arr[n];
+//     for (int i = 0; i < n; i++) {
+//         cin >> arr[i];
+//     }
+
+//     printPairs(arr, n);
+
+//     for (int i = 0; i < n; i++) {
+//         cout << arr[i] << " ";
+//     }
+
+//     return 0;
+// }
+
+//bubble sort
+// #include<bits/stdc++.h>
+// using namespace std;
+
+// void bubbleSort(int arr[], int n){
+//     for(int i=n-1;i>=0;i--){
+//         int didswap=0;
+//         for(int j=0;j<=i-1;j++){
+//             if(arr[j]>arr[j+1]){
+//                 swap(arr[j],arr[j+1]);
+//             }
+//         }
+//         if(didswap==0){
+//             break;
+//         }
+//     }
+// }
+// void selectionSort(int arr[], int n){
+//     for(int i=0;i<n-2;i++){
+//         int mini=i;
+//         for(int j=i;j<=n-1;j++){
+//             if(arr[j]<arr[mini]){
+//                 mini=j;
+//             }
+//         }
+//         swap(arr[i], arr[mini]);
+//     }
+// }
+
+
+// void insertionSort(int arr[], int n){
+//     for(int i=0;i<n-1;i++){
+//         int j=i;
+//         while(j>0&& arr[j-1]>arr[j]){
+//             swap(arr[j-1],arr[j]);
+//             j--;
+//         }
+//     }
+// }
+// int main(){
+//     int n;
+//     cin>>n;
+//     int arr[n];
+//     for(int i=0;i<n;i++){
+//         cin>>arr[i];
+//     }
+//    // bubbleSort(arr,  n);
+//    // selectionSort(arr, n);
+//    selectionSort(arr,n);
+//     for(int num:arr){
+//         cout<<num<<" ";
+//     }
+// }
+
+//ques: - Merged two sorted array .....
+
+
+// #include<bits/stdc++.h>
+// using namespace std;
+
+// void mergeTwoSorted(int arr1[], int arr2[], int n, int m){
+//     int left=n-1;
+//     int right=0;
+//     while(left>=0&& right<m){
+//         if(arr1[left]>arr2[right]){
+//             swap(arr1[left], arr2[right]);
+//             left--;
+//             right ++;
+//         }else{
+//             break;
+//         }
+//     }
+//     sort(arr1, arr1+n);
+//     sort(arr2, arr2+m);
+// }
+
+// int main(){
+//     int n, m;
+//     cin>>n;
+//     int arr1[n];
+//     for(int i=0;i<n;i++){
+//         cin>>arr1[i];
+//     }
+//     cin>>m;
+//     int arr2[m];
+//     for(int i=0;i<m;i++){
+//         cin>>arr2[i];
+//     }
+//     mergeTwoSorted(arr1, arr2, n, m);
+//     for(int a:arr1){
+//         cout<<a<<" ";
+//     }
+//     for(int b:arr2){
+//         cout<<b<<" ";
+//     }
+// }
+
+//Ques:  search in rotated array ...
+
 #include<bits/stdc++.h>
 using namespace std;
 
-
-int peakIndexInMountainArray(int arr[], int n) {
-        int low=0, high=n-1;
-        while(low<high){
-            int mid=low+(high-low)/2;
-            if(arr[mid]<arr[mid+1]){
-                 low=mid+1;
-            }else{
-                high=mid;
-            }
+int search(int arr[],int n,  int target) {
+    int low=0, high=n-1;
+    while(low<=high){
+        int mid=low+(high-low)/2;
+        if(arr[mid]==target){
+            return mid;
         }
-        return low;
+        else if(target>arr[mid]){
+            low=mid+1;
+        }else{
+            high=mid-1;
+        }
     }
+    return -1;
+
+}
+
 int main(){
-   int n ;
-   cin>>n;
-   int arr[n];
-   for(int i=0;i<n;i++){
-    cin>>arr[i];
-   }
-   cout<<peakIndexInMountainArray(arr, n)<<endl;
+    int n,k;
+    cin>>n;
+    int arr[n];
+    for(int i=0;i<n;i++){
+        cin>>arr[i];
+    }
+    cin>>k;
+    int ans=search(arr, n, k);
+    if(ans!=-1){
+        cout<<"Element at index: "<<ans<<endl;
+    }else{
+        cout<<"Element not found: "<<endl;
+    }
+
+
 }

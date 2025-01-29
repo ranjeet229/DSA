@@ -2,7 +2,7 @@
 //delete node from head.....>>>>>>
 //delete node from tail ....>>>>
 //delete node from position.....>>>>>
-
+//delete node of value...>>>>
 
 #include<bits/stdc++.h>
 using namespace std;
@@ -87,7 +87,7 @@ Node* removeKthElement(Node* head, int k){
     }
     return head;
 }
-//remove element on the basic of value;
+//remove element on the basis of value;
 
 Node* removeElement(Node* head, int el){
     if(head==NULL){

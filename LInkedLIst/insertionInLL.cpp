@@ -37,10 +37,76 @@ void print(Node* head){
     }
     cout<<endl;
 }
+//inseting new node...>>>>
+
+Node* insertNode(Node* head, int val){
+    return new Node(val, head);
+}
+//inserting at end ....>>>>
+Node* insertTail(Node* head, int val ){
+    if(head==NULL){
+        return new Node(val);
+    }
+    Node* temp=head;
+    while(temp->next!=NULL){
+        temp=temp->next;
+    }
+    Node* newNode =new Node(val);
+    temp->next=newNode;
+    return head;
+}
+
+//inserting at given kth position...>>>
+Node* insertPosition(Node* head, int el, int k){
+    if(head==NULL){
+        if(k==1){
+            return new Node(el);
+        }else{
+            return head;
+        }
+    }
+    if(k==1){
+        return new Node(el, head);
+    }
+    int cnt=0;
+    Node* temp=head;
+    while(temp!=NULL){
+        cnt++;
+        if(cnt==(k-1)){
+            Node* x = new Node(el, temp->next);
+            temp->next=x;
+            break;
+        }
+        temp=temp->next;
+    }
+    return head;
+}
+Node* insert_Before_Value(Node* head, int el, int val){
+    if(head==NULL){
+       return NULL;
+    }
+    if(head->data==val){
+        return new Node(el, head);
+    }
+    Node* temp=head;
+    while(temp->next!=NULL){
+
+        if(temp->next->data==val){
+            Node* x = new Node(el, temp->next);
+            temp->next=x;
+            break;
+        }
+        temp=temp->next;
+    }
+    return head;
+}
 
 int main(){
     vector<int> arr={12, 8 ,4, 3};
     Node* head=convert_ArrTo_LL(arr);
-    
+   // head=insertNode(head, 15);
+   // head=insertTail(head, 100);
+  // head=insertPosition(head, 100, 4);
+    head=insert_Before_Value(head, 100,12);
     print(head);
 }
