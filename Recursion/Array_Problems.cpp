@@ -1081,40 +1081,65 @@
 
 //Ques:  search in rotated array ...
 
-#include<bits/stdc++.h>
-using namespace std;
+// #include<bits/stdc++.h>
+// using namespace std;
 
-int search(int arr[],int n,  int target) {
-    int low=0, high=n-1;
-    while(low<=high){
-        int mid=low+(high-low)/2;
-        if(arr[mid]==target){
-            return mid;
-        }
-        else if(target>arr[mid]){
-            low=mid+1;
-        }else{
-            high=mid-1;
-        }
-    }
-    return -1;
+// int search(int arr[],int n,  int target) {
+//     int low=0, high=n-1;
+//     while(low<=high){
+//         int mid=low+(high-low)/2;
+//         if(arr[mid]==target){
+//             return mid;
+//         }
+//         else if(target>arr[mid]){
+//             low=mid+1;
+//         }else{
+//             high=mid-1;
+//         }
+//     }
+//     return -1;
 
-}
+// }
 
-int main(){
-    int n,k;
-    cin>>n;
-    int arr[n];
-    for(int i=0;i<n;i++){
-        cin>>arr[i];
-    }
-    cin>>k;
-    int ans=search(arr, n, k);
-    if(ans!=-1){
-        cout<<"Element at index: "<<ans<<endl;
-    }else{
-        cout<<"Element not found: "<<endl;
-    }
+// int main(){
+//     int n,k;
+//     cin>>n;
+//     int arr[n];
+//     for(int i=0;i<n;i++){
+//         cin>>arr[i];
+//     }
+//     cin>>k;
+//     int ans=search(arr, n, k);
+//     if(ans!=-1){
+//         cout<<"Element at index: "<<ans<<endl;
+//     }else{
+//         cout<<"Element not found: "<<endl;
+//     }
 
 
-}
+// }
+
+//sort the arrays of 0's 1's and 2's
+
+// #include<bits/stdc++.h>
+// using namespace std;
+
+// void sortArray(int arr[], int n){
+//     int low=0, mid=0, high=n-1;
+//     while(mid<=high){
+//         if(arr[mid]==0){
+//             swap(arr[low], arr[mid]);
+//             low++;
+//             mid++;
+//         }else if(arr[mid]==1){
+//             mid++;
+//         }else if(arr[mid]==2){
+//             swap(arr[mid], arr[high]);
+//             high--;
+//         }
+//     }
+// }
+
+// int main(){
+
+// }
