@@ -29,6 +29,8 @@ void print(Node* head){
         temp=temp->next;
     }
 }
+
+//convert arr to doubly linked list....>>>
 Node* convertArr2DLL(vector<int> &arr){
     Node* head=new Node(arr[0]);
     Node* prev=head;
@@ -104,13 +106,186 @@ Node* StartingNodeofCYCle(Node* head){
     return NULL;
 }
 
-//Ques 5:
+//Ques 5: Length of a loop in the Linked list....>>>>
+
+int findLength(Node* slow, Node* fast){
+    int cnt=1;
+    fast=fast->next;
+    while(slow!=fast){
+        cnt++;
+        fast=fast->next;
+    }
+    return cnt;
+}
+int findLengthofLoop(Node* head){
+    Node* slow=head;
+    Node* fast=head;
+
+    while(fast!=NULL && fast->next!=NULL){
+        slow=slow->next;
+        fast= fast->next->next;
+
+        if(slow==fast){
+            return findLength(slow, fast);
+        }
+    }
+    return 0;
+}
+
+//QUes-6:Group odd and even linked list.....>>>
+
+Node* OddEvenList(Node* head){
+    Node* odd=head;
+    Node* even=head->next;
+    Node* evenhead=head->next;
+
+    while(even!=NULL && even->next!=NULL){
+        odd->next=odd->next->next;
+        even->next=even->next->next;
+
+        odd=odd->next;
+        even=even->next;
+    }
+    odd->next=evenhead;
+    return head;
+}
+
+//Ques 7: remove nth node from the end of linked list ......>>>>>>>>
+
+Node* removeNthFromEnd(Node* head, int n){
+    Node* fast=head;
+    Node* slow=head;
+    for(int i=0;i<n;i++){
+        fast=fast->next;
+    }
+    if(fast==NULL){
+        return head->next;
+    }
+    while( fast->next!=NULL){
+        slow=slow->next;
+        fast=fast->next;
+    }
+    Node* delNode= slow->next;
+    slow->next=slow->next->next;
+    delete delNode;
+    return head;
+}
+
+//Ques 8: Delete middle node of the linked list ....>>>>
+
+Node* DeleteMiddleNodeLL(Node* head){
+    Node* slow=head;
+    Node* fast=head;
+    fast=head->next->next;
+    while(fast!=NULL && fast->next!=NULL){
+        slow=slow->next;
+        fast=fast->next->next;
+    }
+    slow->next=slow->next->next;
+    return head;
+}
+
+//Ques 9: Sort the linked list .....>>>>>
+//we have to implement three function findMiddle, mergetwolist...>>
+
+Node* findMiddle(Node* head){
+    Node* slow=head;
+    Node* fast=head->next;
+    while(fast!=NULL && fast->next!=NULL){
+        slow=slow->next;
+        fast=fast->next->next;
+    }
+    return slow;
+}
+Node* mergeTwoLists(Node* list1, Node* list2){
+    Node* dummyNode=new Node(-1);
+    Node* temp=dummyNode;
+    while(list1 !=NULL && list2 !=NULL){
+        if(list1->data < list2->data){
+            temp->next=list1;
+            temp=list1;
+            list1=list1->next;
+        }
+        else{
+            temp->next=list2;
+            temp=list2;
+            list2=list2->next;
+        }
+    }
+    if(list1) temp->next=list1;
+    else temp->next=list2;
+
+    return dummyNode->next;
+}
+Node* sortedLinkedList(Node* head){
+      if(head==NULL || head->next==NULL){
+        return head;
+      }
+      Node* middle=findMiddle(head);
+      Node* right=middle->next;
+      middle->next=nullptr;
+      Node* left=head;
+      left= sortedLinkedList(left);
+      right=sortedLinkedList(right);
+      return mergeTwoLists(left, right);
+}
+
+//Ques 10: sort a linked list of 0's 1's and 2's....>>>.
+
+Node* sortListofLL(Node* head){
+    if(head==NULL || head->next==NULL){
+        return head;
+    }
+    Node* zerohead=new Node(-1);
+    Node* onehead=new Node(-1);
+    Node* twohead=new Node(-1);
+
+    Node* zero=zerohead;
+    Node* one = onehead;
+    Node* two=twohead;
+    Node* temp=head;
+
+    while(temp!=NULL){
+        if(temp->data == 0){
+            zero->next=temp;
+            zero=temp;
+        }
+        else if(temp->data == 1){
+            one->next=temp;
+            one = temp;
+        }else{
+            two->next=temp;
+            two = temp;
+        }
+        temp=temp->next;
+    }
+    zero->next=(onehead->next)? (onehead->next) : (twohead->next);
+    one->next=twohead->next;
+    two->next=NULL;
+    Node* newhead=zerohead->next;
+
+    delete zerohead;
+    delete onehead;
+    delete twohead;
+
+    return newhead;
+}
+
 int main(){
-    vector<int> arr={12, 5, 8 ,7};
+    vector<int> arr={1,2,3,4,5};
     Node* head=convertArr2DLL(arr);
     // head=MiddleLL(head);
     // head=ReverseLL(head);
     // DetectCycle(head);
     // head=StartingNodeofCYCle(head);
+    // findLengthofLoop(head);
+
+    // head=OddEvenList(head);
+    //  head=removeNthFromEnd(head, 2);
+    // head=DeleteMiddleNodeLL(head);
+
+    // head=sortedLinkedList(head);
+
+    head=sortListofLL(head);
     print(head);
 }
