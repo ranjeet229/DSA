@@ -271,6 +271,34 @@ Node* sortListofLL(Node* head){
     return newhead;
 }
 
+//Ques 11 : Add 1 to a number represented by LL.............>>>>>
+
+int addHelper(Node* temp){
+    if(temp==NULL){
+        return 1;
+    }
+    int carry=addHelper(temp->next);
+    temp->data+=carry;
+    if(temp->data<10){
+        return 0;
+    }
+    temp->data=0;
+    return 1;
+}
+
+Node* addOne(Node* head){
+    int carry =addHelper(head);
+    if(carry==1){
+        Node* newNode=new Node(1);
+        newNode->next=head;
+        head=newNode;
+    }
+    return head;
+}
+
+//Ques 12: adding two number in a linked list ......>>>>>>
+
+
 int main(){
     vector<int> arr={1,2,3,4,5};
     Node* head=convertArr2DLL(arr);
@@ -286,6 +314,7 @@ int main(){
 
     // head=sortedLinkedList(head);
 
-    head=sortListofLL(head);
+    // head=sortListofLL(head);
+    head=addOne(head);
     print(head);
 }
