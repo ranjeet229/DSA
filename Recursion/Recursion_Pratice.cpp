@@ -247,10 +247,135 @@ vector<vector<int>> Permute(vector<int>& nums){
     recurPermute(ds, nums, ans, freq);
     return ans;
 }
-int main(){
-    int arr[]={1,2,1};
-    int n=3;
-    int sum=2;
-    cout<<Countsubsequence(0, 0, sum, arr, n)<<endl;
-    return 0;
+// int main(){
+//     int arr[]={1,2,1};
+//     int n=3;
+//     int sum=2;
+//     cout<<Countsubsequence(0, 0, sum, arr, n)<<endl;
+//     return 0;
+// }
+
+//ques 8: Sudoko solver...............>>>>>>
+
+bool isValid(vector < vector < char >> & board, int row, int col, char c) {
+  for (int i = 0; i < 9; i++) {
+    if (board[i][col] == c)
+      return false;
+
+    if (board[row][i] == c)
+      return false;
+
+    if (board[3 * (row / 3) + i / 3][3 * (col / 3) + i % 3] == c)
+      return false;
+  }
+  return true;
+}
+
+bool solveSudoku(vector < vector < char >> & board) {
+  for (int i = 0; i < board.size(); i++) {
+    for (int j = 0; j < board[0].size(); j++) {
+      if (board[i][j] == '.') {
+        for (char c = '1'; c <= '9'; c++) {
+          if (isValid(board, i, j, c)) {
+            board[i][j] = c;
+
+            if (solveSudoku(board))
+              return true;
+            else
+              board[i][j] = '.';
+          }
+        }
+
+        return false;
+      }
+    }
+  }
+  return true;
+}
+// int main() {
+//     vector<vector<char>>board{
+//         {'3', '.', '.', '.', '2', '.', '7', '.', '1'},
+//         {'8', '9', '.', '.', '7', '3', '.', '.', '6'},
+//         {'7', '2', '.', '8', '5', '.', '.', '.', '9'},
+//         {'.', '.', '4', '1', '.', '.', '8', '6', '.'},
+//         {'.', '.', '.', '5', '6', '8', '.', '4', '.'},
+//         {'.', '8', '.', '3', '.', '.', '.', '9', '.'},
+//         {'.', '.', '.', '.', '.', '.', '.', '1', '2'},
+//         {'1', '6', '2', '7', '.', '4', '9', '5', '.'},
+//         {'.', '3', '8', '.', '1', '9', '.', '.', '.'}
+//     };
+
+//     solveSudoku(board);
+
+//     for(int i= 0; i< 9; i++){
+//         for(int j= 0; j< 9; j++)
+//             cout<<board[i][j]<<" ";
+//             cout<<"\n";
+//     }
+//     return 0;
+// }
+
+//ques 9:  Rate in a maze problem
+
+class Solution {
+  void findPathHelper(int i, int j, vector < vector < int >> & a, int n, vector < string > & ans, string move,
+    vector < vector < int >> & vis) {
+    if (i == n - 1 && j == n - 1) {
+      ans.push_back(move);
+      return;
+    }
+
+    // downward
+    if (i + 1 < n && !vis[i + 1][j] && a[i + 1][j] == 1) {
+      vis[i][j] = 1;
+      findPathHelper(i + 1, j, a, n, ans, move + 'D', vis);
+      vis[i][j] = 0;
+    }
+
+    // left
+    if (j - 1 >= 0 && !vis[i][j - 1] && a[i][j - 1] == 1) {
+      vis[i][j] = 1;
+      findPathHelper(i, j - 1, a, n, ans, move + 'L', vis);
+      vis[i][j] = 0;
+    }
+
+    // right 
+    if (j + 1 < n && !vis[i][j + 1] && a[i][j + 1] == 1) {
+      vis[i][j] = 1;
+      findPathHelper(i, j + 1, a, n, ans, move + 'R', vis);
+      vis[i][j] = 0;
+    }
+
+    // upward
+    if (i - 1 >= 0 && !vis[i - 1][j] && a[i - 1][j] == 1) {
+      vis[i][j] = 1;
+      findPathHelper(i - 1, j, a, n, ans, move + 'U', vis);
+      vis[i][j] = 0;
+    }
+
+  }
+  public:
+    vector < string > findPath(vector < vector < int >> & m, int n) {
+      vector < string > ans;
+      vector < vector < int >> vis(n, vector < int > (n, 0));
+
+      if (m[0][0] == 1) findPathHelper(0, 0, m, n, ans, "", vis);
+      return ans;
+    }
+};
+
+int main() {
+  int n = 4;
+
+   vector < vector < int >> m = {{1,0,0,0},{1,1,0,1},{1,1,0,0},{0,1,1,1}};
+
+  Solution obj;
+  vector < string > result = obj.findPath(m, n);
+  if (result.size() == 0)
+    cout << -1;
+  else
+    for (int i = 0; i < result.size(); i++) cout << result[i] << " ";
+  cout << endl;
+
+  return 0;
 }

@@ -44,7 +44,7 @@ Node* convertArr2DLL(vector<int> &arr){
 
 //Ques 1: Find Middle of the linked list...>>>>
 
-Node* MiddleLL(Node* head){
+Node* MiddleLL(Node* head){ 
     Node* slow=head;
     Node* fast=head;
     while(fast!=NULL && fast->next !=NULL){
