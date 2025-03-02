@@ -119,13 +119,95 @@ int characterReplacement(string s, int k){
     }
     return maxlen;
 }
+
+// ques 5: Binary subarray with sum which is equal to k........>>>>
+
+int binarysum(int arr[], int n, int goal){
+
+    if(goal < 0) return 0;
+    int l=0, r=0, sum=0, cnt=0;
+    while(r<n){
+        sum+=arr[r];
+
+        while( sum > goal){
+            sum-=arr[l];
+            l++;
+        }
+        cnt=cnt+(r-l+1);
+        r++;
+    }
+    return cnt;
+}
+
+int numSubarraysWithSum(int arr[], int n, int goal){
+    return binarysum(arr,n,goal) - binarysum(arr, n, goal-1);
+}
+
+//ques 6:-> Count number of nice subarray...>>>
+int cntNice(int arr[], int n, int k){
+    if(k<0) return 0;
+    int l=0, r=0, sum=0, cnt=0;
+    while(r<n){
+        sum+=(arr[r] %2);
+        while(sum > k){
+            sum-=(arr[l] %2);
+            l++;
+        }
+        cnt=cnt+(r-l+1);
+        r++;
+    }
+    return cnt;
+}
+
+int numberOfSubarrays(int arr[], int n, int k ){
+    return cntNice(arr, n, k) - cntNice(arr, n, k-1);
+}
+
+// ques 7:- Number of substring containing all three characters......>>>>
+int numberOFSubstrings(string s){
+    unordered_map<char, int> cnt;
+    int l=0, res=0, n=s.size();
+    for(int i=0;i<n;i++){
+        cnt[s[i]]++;
+
+        while(cnt['a']>0 && cnt['b'] > 0 && cnt['c']>0){
+            res+=(n-i);
+            cnt[s[l]]--;
+            l++;
+        }
+    }
+    return res;
+}
+
+//ques 8:- Maximum point you can obtain from cards....>>>>
+int maxScore(int arr[],int n , int k){
+    int lsum=0, rsum=0, maxsum=0;
+    for(int i=0;i<k;i++){
+        lsum+=arr[i];
+    }
+    maxsum=lsum;
+    int rindx=n-1;
+    for(int i=k-1;i>=0;i--){
+        lsum=lsum-arr[i];
+        rsum=rsum+arr[rindx];
+        rindx--;
+
+        maxsum=max(maxsum, lsum+rsum);
+    }
+    return maxsum;
+}
+
 int main() {
-    string s;
-    cin >> s; 
-
+    int n;
+    cin>>n;
+    int arr[n];
+    for(int i=0;i<n;i++){
+        cin>>arr[i];
+    }
     int k;
-    cin >> k; 
+    cin>>k;
+    // cout<<numSubarraysWithSum(arr, n, k)<<endl;
+    //cout<<numberOfSubarrays(arr, n, k)<<endl;
+    cout<<maxScore(arr, n, k)<<endl;
 
-    cout << characterReplacement(s, k) << endl; // Call function with correct parameters
-    return 0;
 }
