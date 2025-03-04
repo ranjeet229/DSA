@@ -790,36 +790,34 @@ imp:
 
 // int main(){};
 
+// Book sorting....>>
+
 #include<bits/stdc++.h>
 using namespace std;
 
-int fibonacci_bottomUp(int n){
-
-    vector<int> dp=vector<int>(n-1,0);
-    dp[0]=0;
-    dp[1]=1;
-
-    for(int i=2;i<n;i++){
-        dp[i] =dp[i-1]+dp[i-2];
+int minStepToSOrtBook(int arr[], int n){
+    unordered_map<int,int> pos;
+    for(int i=0;i<n;i++){
+        pos[arr[i]]=i;
     }
-
-    return dp[n];
+    int maxlen=1, currlen=1;
+    for(int i=2;i<=n;i++){
+        if(pos[i] >pos[i-1]){
+            currlen++;
+            maxlen=max(maxlen, currlen);
+        }else{
+            currlen=1;
+        }
+    }
+    return n-maxlen;
 }
 
-int fibonacci_1space(int n){
-    if(n<=1) return n;
-
-    int prev1=1;
-    int prev2=0;
-
-    int ans;
-    for(int i=0;i<n-1;i++){
-        ans=prev2+prev1;
-        prev2=prev1;
-        prev1=ans;
-    }
-    return ans;
-}
 int main(){
-
+    int n;
+    cin>>n;
+    int arr[n];
+    for(int i=0;i<n;i++){
+        cin>>arr[i];
+    }
+    cout<<minStepToSOrtBook(arr,n)<<endl;
 }

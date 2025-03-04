@@ -197,6 +197,35 @@ int maxScore(int arr[],int n , int k){
     return maxsum;
 }
 
+//Ques 9: Subarray with k different integers ...>>>
+
+int kdistinct(vector<int> & nums, int k){
+    if(k==0) return 0;
+    int n=nums.size();
+    unordered_map<int, int> mpp;
+    int l=0, r=0, cnt=0;
+    while(r<n){
+        mpp[nums[r]]++;
+
+        while(mpp.size() > k){
+            mpp[nums[l]]--;
+
+            if(mpp[nums[l]]==0){
+                mpp.erase(nums[l]);
+            }
+            l++;
+        }
+        cnt=cnt+(r-l+1);
+        r++;
+
+    }
+    return cnt;
+}
+int subarraysWithKDistinct(vector<int>& nums, int k) {
+    return kdistinct(nums, k) - kdistinct(nums,k-1);
+}
+
+
 int main() {
     int n;
     cin>>n;
