@@ -19,6 +19,8 @@ int findContentChildren(int greed[], int size[], int n, int m){
     return r;
 }
 
+//ques: 2=
+
 int main(){
     int n;
     cin>>n;

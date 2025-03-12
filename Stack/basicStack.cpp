@@ -285,4 +285,108 @@ public:
     }
 };
 
-//
+//Ques:1- find next greater element 1...>>>
+
+vector<int> nextGreaterElement(vector<int>& nums1, vector<int>& nums2) {
+    map<int,int> mpp;
+    stack<int> st;
+    vector<int> nge;
+    int m=nums2.size();
+
+    for(int i=m-1;i>=0;i--){
+        while(!st.empty() && st.top()<=nums2[i]){
+            st.pop();
+        }
+        if(st.empty()){
+            mpp[nums2[i]] =-1;
+        }else{
+            mpp[nums2[i]]=st.top();
+        }
+        st.push(nums2[i]);
+    }
+    for(auto i:nums1){
+        nge.push_back(mpp[i]);
+    }
+    return nge;
+
+}
+
+//ques:2:- find next greater element 2....>>>>
+
+vector<int> nextGreaterElements(vector<int>&arr){
+    int n=arr.size();
+    vector<int> nge(n,-1);
+    stack<int> st;
+    for(int i=2*n-1;i>=0;i--){
+        while(!st.empty() && st.top() <=arr[i%n]){
+            st.pop();
+        }
+        if(i<n){
+            nge[i]=st.empty()?-1:st.top();
+        }
+        st.push(arr[i%n]);
+    }
+    return nge;
+}
+
+//ques3: Number of greater elements to the right.......>>>>
+
+vector<int> count_NGE(int n, vector<int> &arr, int queries, vector<int> &indices){
+
+    int n=arr.size();
+    vector<int> ans(queries ,0);
+
+    for(int i=0;i<queries;i++){
+        int idx =indices[i];
+        int cnt=0;
+        for(int j=idx+1;j<n;j++){
+            if(arr[j] >arr[idx]){
+                cnt++;
+            }
+        }
+        ans[i]=cnt;
+    }
+    return ans;
+}
+
+//ques 4: Trapping Rainwater int stack
+
+int trap(int height[], int n) {
+
+    if (n == 0) return 0;
+
+    int lmax = 0, rmax = 0, total = 0;
+    int l = 0, r = n - 1;
+
+    while (l < r) {
+        if (height[l] <= height[r]) {
+            if (lmax > height[l]) {
+                total += lmax - height[l];
+            } else {
+                lmax = height[l];
+            }
+            l++;
+        } else {
+            if (rmax > height[r]) {
+                total += rmax - height[r];
+            } else {
+                rmax = height[r];
+            }
+            r--;
+        }
+    }
+    return total;
+}
+
+//ques 5: 
+int main() {
+    int n;
+    cin>>n;
+    int arr[n];
+    for(int i=0;i<n;i++){
+        cout<<arr[i];
+    }
+    cout<<trap(arr,n)<<endl;
+}
+
+
